@@ -25,10 +25,10 @@ export class AppComponent implements OnInit {
     this.loading = true;
     this.selectOptions =[];
     this.cols = [
-      {field: 'vin', header: 'Vin'},
-      {field: 'year', header: 'Year'},
-      {field: 'brand', header: 'Brand'},
-      {field: 'color', header: 'Color'}
+      {field: 'vin', header: 'Vin', filter: 'in'},
+      {field: 'year', header: 'Year', filter: 'contains'},
+      {field: 'brand', header: 'Brand', filter: 'in'},
+      {field: 'color', header: 'Color', filter: 'in'}
     ];
     //setTimeout(() => {
       this.carService.getCarsSmall().subscribe(cars => {

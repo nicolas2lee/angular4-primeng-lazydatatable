@@ -4,12 +4,15 @@
               [lazy]="true" [totalRecords]="totalRecords" (onLazyLoad)="loadCarsLazy($event)" >
   <p-header>Virtual Scrolling - 250K Rows</p-header>
 
-  <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [filter]="true" filterMatchMode="in">
+  <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [filter]="true" >
+    <ng-container *ngIf="col.field != 'year' ">
     <ng-template pTemplate="filter" let-col>
 
-      <p-multiSelect [options]="selectOptions[col.field]" defaultLabel="All Colors" appendTo="body"
-                     (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+        <p-multiSelect [options]="selectOptions[col.field]" defaultLabel="All Colors" appendTo="body"
+                       (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+
     </ng-template>
+    </ng-container>
     <ng-template let-col let-row="rowData" pTemplate="body">
       {{row[col.field]}}
     </ng-template>
