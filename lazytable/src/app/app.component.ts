@@ -82,6 +82,10 @@ export class AppComponent implements OnInit {
 
   }
 
+  update(){
+    this.cars[0].vin = 'test';
+  }
+
   private setSelectOptions(cars) {
     console.log(cars)
     this.selectOptions = Object.create({});
